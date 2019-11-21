@@ -24,7 +24,7 @@ requirements:
     - python <3
     - setuptools
     - numpy
-    - pymbar 
+    - pymbar =3.0.3 
     - matplotlib
 
 test:
