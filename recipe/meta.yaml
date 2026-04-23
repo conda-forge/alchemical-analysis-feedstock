@@ -10,24 +10,26 @@ source:
   md5: 96128a5b89b2df7f6573a4795cde7af2
 
 build:
-  number: 2
+  number: 3
   noarch: python
   entry_points:
     - alchemical_analysis = alchemical_analysis.alchemical_analysis:main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python <3
+    - python {{ python_min }}
     - pip
   run:
-    - python <3
+    - python >={{ python_min }},<3
     - setuptools
     - numpy
     - pymbar 3.0.3 
     - matplotlib-base
 
 test:
+   requires:
+      - python {{ python_min }}
    commands:
      - alchemical_analysis -h
 
